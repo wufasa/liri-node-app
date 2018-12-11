@@ -34,14 +34,14 @@ else if(command === "spotify-this-song"){
         .search({ type: 'track', query: songName })
         .then(function(response) {
         var jsonData = response.data;
-        //        var showData = [
-        //            "Artist name: " + jsonData.artist,
-        //            "Song name: " + jsonData.name,
-        //            "Preview link: " + jsonData.previewLink,
-        //"Album title: " + jsonData.album,
-        //        ].join("\n\n");
+        var showData = [
+            "Artist name: " + jsonData.artists.name,
+            "Song name: " + jsonData.name,
+            "Preview link: " + jsonData.preview_url,
+            "Album title: " + jsonData.album.name,
+        ].join("\n\n");
 
-        console.log(jsonData);
+        console.log(showData);
     })
         .catch(function(err) {
         console.log(err);
@@ -60,18 +60,17 @@ else if(command === "movie-this"){
         // Place the response.data into a variable, jsonData.
         var jsonData = response.data;
 
-        // showData ends up being the string containing the show data we will print to the console
-//        var showData = [
-//            "Title of the movie: " + jsonData.name,
-//            "Release year: " + jsonData.venue.city,
-//            "IMDB rating: " + jsonData.datetime,
-//            "Rotten Tomato rating: " + jsonData.datetime,
-//            "Produced in: " + jsonData.datetime,
-//            "Language: " + jsonData.datetime,
-//            "Plot: " + jsonData.datetime,
-//            "Actors: " + jsonData.datetime,
-//        ].join("\n\n");
-        console.log(jsonData);
+                var showData = [
+                    "Title of the movie: " + jsonData.Title,
+                    "Release year: " + jsonData.Year,
+                    "IMDB rating: " + jsonData.imdbRating,
+                    "Rotten Tomato rating: " + jsonData.Ratings[1].Value,
+                    "Produced in: " + jsonData.Country,
+                    "Language: " + jsonData.Language,
+                    "Plot: " + jsonData.Plot,
+                    "Actors: " + jsonData.Actors,
+                ].join("\n\n");
+        console.log(showData);
     });
 
 
